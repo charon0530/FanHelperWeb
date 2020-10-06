@@ -22,7 +22,7 @@
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
-  "engine":{
+  "engines":{
     "node":"10.14.2",
     "npm":"6.4.1"
   }
