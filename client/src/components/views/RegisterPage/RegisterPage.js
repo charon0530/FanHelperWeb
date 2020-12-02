@@ -31,6 +31,9 @@ function RegisterPage(props) {
         if(Password !== ConfirmPassword){
             return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
         }
+        if(Password.length<5){
+            return alert('비밀번호는 5자리 이상이어야합니다.')
+        }
         let body = {
             email: Email,
             name: Name,

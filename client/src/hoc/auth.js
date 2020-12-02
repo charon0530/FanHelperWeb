@@ -14,7 +14,7 @@ export default function(SpecificComponent, option, adminRoute = null){
         useEffect(()=>{
             dispatch(auth())
                 .then(response=>{
-                    console.log(response)
+                    //console.log(response)
                     
                     //여기서 분기
 
@@ -36,6 +36,7 @@ export default function(SpecificComponent, option, adminRoute = null){
                         }
                     }
                 })
+             // eslint-disable-next-line react-hooks/exhaustive-deps
         },[])
         
         return(<SpecificComponent />

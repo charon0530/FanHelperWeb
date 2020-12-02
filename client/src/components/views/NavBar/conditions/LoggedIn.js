@@ -1,25 +1,39 @@
 import React, { useState } from 'react'
 import { Menu } from 'antd';
 import axios from 'axios'
-import { HomeOutlined, LoginOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, SettingOutlined } from '@ant-design/icons';
 import {withRouter} from 'react-router-dom'
-function LoggedOut(props) {
+function LoggedIn(props) {
     const [current, setcurrent] = useState("mail")
     const handleClick = e => {
-        console.log('click ', e);
+        //console.log('click ', e);
         setcurrent({ current: e.key });
       };
 
     const homeClickHandler=(event)=>{
         props.history.push('/')
     }
+    const photoClickHandler=(event)=>{
+        props.history.push('/photo')
+    }
+    const videoClickHandler=(event)=>{
+        props.history.push('/video')
+    }
 
-    const loginClickHandler=(event)=>{
+    const loginClickHandler=(event)=>{ //eslint-disable-line no-unused-vars
         props.history.push('/login')
     }
 
     const videoUploadClickHandler=(event)=>{
         props.history.push('/video/upload')
+    }
+
+    const photoUploadClickHandler=(event)=>{
+        props.history.push('/photo/upload')
+    }
+
+    const subscriptionClickHandler=(event)=>{
+        props.history.push('/subscription')
     }
 
     const logoutClickHandler=(event)=>{
@@ -34,12 +48,26 @@ function LoggedOut(props) {
         })
     }
 
-    console.log(props.user)
+    //console.log(props.user)
     return (
         <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
             <Menu.Item key="mail" icon={<HomeOutlined />} onClick={homeClickHandler}>
                 HOME
              </Menu.Item>
+
+             <Menu.Item key="photo" icon={<HomeOutlined />} onClick={photoClickHandler}>
+                Photo
+             </Menu.Item>
+
+             <Menu.Item key="video" icon={<HomeOutlined />} onClick={videoClickHandler}>
+                Video
+             </Menu.Item>
+
+             <Menu.Item key="subscription" icon={<HomeOutlined />} onClick={subscriptionClickHandler}>
+                subscription
+             </Menu.Item>
+
+             
 
              
 
@@ -47,11 +75,17 @@ function LoggedOut(props) {
                 LogOut
             </Menu.Item>
             
-            <Menu.Item key="upload" icon={<SettingOutlined />} onClick={videoUploadClickHandler} style={{float: 'right'}}>
+            <Menu.Item key="v_upload" icon={<SettingOutlined />} onClick={videoUploadClickHandler} style={{float: 'right'}}>
                 Video
             </Menu.Item>
 
-            <Menu.Item key="sign_in"  onClick={loginClickHandler} style={{float: 'right'}}>
+            <Menu.Item key="p_upload" icon={<SettingOutlined />} onClick={photoUploadClickHandler} style={{float: 'right'}}>
+                Photo
+            </Menu.Item>
+
+            
+
+            <Menu.Item key="sign_in"  style={{float: 'right'}}>
                {props.userName}
             </Menu.Item>
 
@@ -60,4 +94,4 @@ function LoggedOut(props) {
     )
 }
 
-export default withRouter(LoggedOut)
+export default withRouter(LoggedIn)
