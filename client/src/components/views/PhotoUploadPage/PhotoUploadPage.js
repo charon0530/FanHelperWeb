@@ -143,7 +143,7 @@ function PhotoUploadPage(props) {
             group:Group,
             name:Name
         }
-        Axios.post('/api/video/uploadPhoto',variables)
+        Axios.post('/api/photo/uploadPhoto',variables)
         .then(response=>{
             if(response.data.success){
                 //console.log(response.data)
