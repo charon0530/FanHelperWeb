@@ -115,7 +115,7 @@ function PhotoUploadPage(props) {
         }
         formData.append("file",files[0])
 
-        Axios.post('/api/video/uploadfiles/photo',formData,config)
+        Axios.post('/api/photo/uploadfiles',formData,config)
         .then(response=>{
             if(response.data.success){
 
