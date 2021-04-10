@@ -155,7 +155,7 @@ app.post('/api/video/uploadfiles',(req,res)=>{
   })
 })
 
-app.post('/api/video/uploadfiles/photo',(req,res)=>{
+app.post('/api/photo/uploadfiles',(req,res)=>{
   // 이미지 파일 저장
   upload_photo(req, res, err => {
     if (err) {
@@ -316,7 +316,7 @@ app.post('/api/memberList',(req,res)=>{
 app.post('/api/photos/getPhotoURLs',(req,res)=>{
   Photo.find({group:req.body.group, name:req.body.memberName},{_id:false, filePath:true, likes:true})
     .sort({likes:"desc"})
-    .limit(3)
+    .limit(1)
     .exec((err,memberURLs)=>{
       if(err) {
         return res.status(400).send(err)
@@ -749,6 +749,7 @@ if(true){
   app.use(express.static("client/build"))
   app.get("*",(req,res)=>{
     res.sendFile(path.resolve(__dirname,"../client","build","index.html"))
+    console.log("passing me")
   })  
 }
 
